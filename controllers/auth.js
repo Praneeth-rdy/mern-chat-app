@@ -60,7 +60,7 @@ exports.forgotPassword = async (request, response, next) => {
 
         await user.save();
 
-        const resetUrl = `${process.env.CLIENT_URI}/api/auth/reset-password/${resetToken}`;
+        const resetUrl = `${process.env.CLIENT_URI}/reset-password/${resetToken}`;
         
         const message = `
             <h1>You have requested a password reset</h1>
