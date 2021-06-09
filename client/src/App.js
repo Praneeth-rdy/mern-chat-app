@@ -8,13 +8,15 @@ import LoginScreen from './components/screens/LoginScreen';
 import RegisterScreen from './components/screens/RegisterScreen';
 import ForgotPasswordScreen from './components/screens/ForgotPasswordScreen';
 import ResetPasswordScreen from './components/screens/ResetPasswordScreen';
+import HomeScreen from './components/screens/HomeScreen';
 
 function App() {
   return (
     <Router>
       <div className="app">
         <Switch>
-          <PrivateRoute exact path="/" component={PrivateScreen} />
+          <Route exact path="/" component={HomeScreen} />
+          <PrivateRoute exact path="/private" component={PrivateScreen} />
           <Route exact path="/login" component={LoginScreen} />
           <Route exact path="/register" component={RegisterScreen} />
           <Route exact path="/forgot-password" component={ForgotPasswordScreen} />

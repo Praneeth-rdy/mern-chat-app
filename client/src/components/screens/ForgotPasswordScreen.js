@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Layout from '../Layout';
+
 import Styles from '../../styles/screens/forgotPasswordScreen.module.css';
 
 
@@ -10,8 +12,8 @@ function ForgotPasswordScreen({ history }) {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
 
-    useEffect(()=>{
-        if(localStorage.getItem('authToken')){
+    useEffect(() => {
+        if (localStorage.getItem('authToken')) {
             history.push('/');
         }
     }, [history]);
@@ -26,37 +28,39 @@ function ForgotPasswordScreen({ history }) {
         }
 
         try {
-            const {data} = await axios.post('/api/auth/forgot-password', { email }, config);
+            const { data } = await axios.post('/api/auth/forgot-password', { email }, config);
 
             setSuccess('Email Sent');
 
-        } catch(error) {
+        } catch (error) {
             setError(error.response.data.error);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setError('');
             }, 5000);
         }
     }
 
     return (
-        <div>
-            <form onSubmit={resetPasswordHandler}>
-                <h3>Login</h3>
-                {error && <span>{error}</span>}
-                {success && <span>{success}</span>}
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email" placeholder="Enter Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required />
-                </div>
+        <Layout>
+            <div>
+                <form onSubmit={resetPasswordHandler}>
+                    <h3>Login</h3>
+                    {error && <span>{error}</span>}
+                    {success && <span>{success}</span>}
+                    <div>
+                        <label htmlFor="email">Email:</label>
+                        <input
+                            type="email"
+                            id="email" placeholder="Enter Email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required />
+                    </div>
 
-                <button type="submit" >Send Reset Link</button>
-            </form>
-        </div>
+                    <button type="submit" >Send Reset Link</button>
+                </form>
+            </div>
+        </Layout>
     )
 }
 
