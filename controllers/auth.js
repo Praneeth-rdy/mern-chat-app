@@ -43,7 +43,6 @@ exports.login = async (request, response, next) => {
         next(error);
     }
 
-    response.send("Login Route");
 };
 
 exports.forgotPassword = async (request, response, next) => {
