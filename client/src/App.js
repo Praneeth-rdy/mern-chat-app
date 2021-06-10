@@ -12,7 +12,7 @@ import HomeScreen from './components/screens/HomeScreen';
 
 function App() {
   return (
-    <Router basename="/mern-chat-app">
+    <Router>
       <div className="app">
         <Switch>
           <Route exact path="/" component={HomeScreen} />
