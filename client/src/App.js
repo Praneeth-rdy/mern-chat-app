@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 // Importing Screens
@@ -12,7 +12,7 @@ import HomeScreen from './components/screens/HomeScreen';
 
 function App() {
   return (
-    <Router basename="mern-chat-app">
+    <Router basename="/mern-chat-app">
       <div className="app">
         <Switch>
           <Route exact path="/" component={HomeScreen} />
