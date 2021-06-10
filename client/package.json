@@ -2,7 +2,7 @@
   "name": "client",
   "author": "praneeth-rdy",
   "version": "0.1.0",
-  "proxy": "https://kpr-express-api.herokuapp.com",
+  "proxy": "https://kpr-express-api.herokuapp.com/chat",
   "homepage": "https://praneeth-rdy.github.io/mern-chat-app/",
   "private": true,
   "dependencies": {
