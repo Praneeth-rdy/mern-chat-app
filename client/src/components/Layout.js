@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa'
-import '../styles/global.css';
 import Styles from '../styles/layout.module.css';
 
 function Layout({ children }) {
@@ -26,7 +25,7 @@ function Layout({ children }) {
                 </nav>
             </header>
 
-            <div>
+            <div className={Styles.mainBody}>
                 {children}
             </div>
             <footer>

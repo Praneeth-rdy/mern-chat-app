@@ -9,7 +9,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: black;
+    background-color: var(--color-dark);
 }
 
 .navbar {
@@ -37,7 +37,7 @@ header {
 
 .navbarNav .navItem a, .navbar a {
     text-decoration: none;
-    color: white;
+    color: var(--color-light);
 }
 
 .bars{
@@ -49,8 +49,8 @@ footer{
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    color: white;
-    background-color: black;
+    color: var(--color-light);
+    background-color: var(--color-dark);
     padding: 10px;
 }
 
@@ -64,11 +64,17 @@ footer{
 }
 
 .footerBlock .footerLink {
-    color: white;
+    color: var(--color-light);
     text-decoration: none;
     margin: 2px 5px;
 }
 
 .footerBlock .footerLink:hover {
     text-decoration: underline;
+}
+
+.mainBody{
+    width: 95%;
+    max-width: 1200px;
+    align-self: center;
 }

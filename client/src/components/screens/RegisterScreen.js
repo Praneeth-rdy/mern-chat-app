@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Styles from '../../styles/screens/registerScreen.module.css';
+import Layout from '../Layout';
 
 
 function RegisterScreen({ history }) {
@@ -50,51 +51,57 @@ function RegisterScreen({ history }) {
     }
 
     return (
-        <div>
+        <Layout>
             <form onSubmit={registerHandler}>
-                <h3>Register</h3>
+                <h1 className="form-heading">Register</h1>
                 {error && <span>{error}</span>}
-                <div>
-                    <label htmlFor="name">Username:</label>
-                    <input
-                        type="text"
-                        id="name" placeholder="Enter Username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        required />
-                </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email" placeholder="Enter Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required />
-                </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password" placeholder="Enter Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required />
-                </div>
-                <div>
-                    <label htmlFor="confirmPassword">Confirm Password:</label>
-                    <input
-                        type="password"
-                        id="confirmPassword" placeholder="Enter Password Again"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required />
-                </div>
+                <div className="form-row">
+                    <div className="input-field">
+                        <input
+                            type="text"
+                            id="name" className="form-control"
 
-                <button type="submit" >Register</button>
-                <span>Already have an account? <Link to="/login">Login</Link></span>
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            required />
+                        <label htmlFor="name">Username</label>
+                    </div>
+                    <div className="input-field">
+                        <input
+                            type="email"
+                            id="email" className="form-control"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required />
+                        <label htmlFor="email">Email</label>
+                    </div>
+                </div>
+                <div className="form-row">
+                    <div className="input-field">
+                        <input
+                            type="password"
+                            id="password" className="form-control"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required />
+                        <label htmlFor="password">Password</label>
+                    </div>
+                    <div className="input-field">
+                        <input
+                            type="password"
+                            id="confirmPassword" className="form-control"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required />
+                        <label htmlFor="confirmPassword">Confirm Password</label>
+                    </div>
+                </div>
+                <div className="form-footer">
+                    <button type="submit" >Register</button>
+                    <p>Already have an account? <Link to="/login">Login</Link></p>
+                </div>
             </form>
-        </div>
+        </Layout>
     )
 }
 

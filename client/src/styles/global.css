@@ -1,13 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+
+/* Variables */
+:root{
+  --color-dark: #232931;
+  --color-primary: #4ecca3;
+  --color-secondary: #393e46;
+  --color-light: #eeeeee;
+}
+
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: "Roboto";
+  font-family: "Open Sans";
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.form-heading {
+  text-align: center;
+  font-weight: bold;
+  font-size: 34px;
+  color: var(--color-secondary);
+}
+
+.form-footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-footer button {
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+.form-footer p {
+  color: var(--color-secondary);
+  font-size: 14px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+}
+
+.input-field {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  height: 44px;
+  margin: 20px 20px;
+  line-height: 44px;
+}
+
+label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #d3d3d3;
+  transition: 0.2s all;
+  cursor: text;
+}
+input[class="form-control"][type="text"],
+input[class="form-control"][type="email"],
+input[class="form-control"][type="password"],
+textarea[class="form-control"] {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid #d3d3d3;
+  box-shadow: none;
+  color: var(--color-secondary);
+}
+input[class="form-control"][type="text"]:invalid,
+input[class="form-control"][type="email"]:invalid,
+input[class="form-control"][type="password"]:invalid,
+textarea[class="form-control"]:invalid {
+  outline: 0;
+  /* color: #ff2300;
+  border-color: #ff2300; */
+}
+
+
+input[class="form-control"][type="text"]:focus,
+input[class="form-control"][type="email"]:focus,
+input[class="form-control"][type="password"]:focus,
+textarea[class="form-control"]:focus,
+
+input[class="form-control"][type="text"]:valid,
+input[class="form-control"][type="email"]:valid,
+input[class="form-control"][type="password"]:valid,
+textarea[class="form-control"]:valid {
+  border-color: #929292;
+}
+
+
+input[class="form-control"][type="text"]:focus~label,
+input[class="form-control"][type="email"]:focus~label,
+input[class="form-control"][type="password"]:focus~label,
+textarea[class="form-control"]:focus~label,
+
+input[class="form-control"][type="text"]:valid~label,
+input[class="form-control"][type="email"]:valid~label,
+input[class="form-control"][type="password"]:valid~label,
+textarea[class="form-control"]:valid~label {
+  font-size: 14px;
+  top: -20px;
+  color: #929292;
 }

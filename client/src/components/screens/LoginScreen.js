@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Styles from '../../styles/screens/loginScreen.module.css';
+import Layout from '../Layout';
 
 
 function LoginScreen({ history }) {
@@ -10,8 +11,8 @@ function LoginScreen({ history }) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    useEffect(()=>{
-        if(localStorage.getItem('authToken')){
+    useEffect(() => {
+        if (localStorage.getItem('authToken')) {
             history.push('/');
         }
     }, [history]);
@@ -26,46 +27,49 @@ function LoginScreen({ history }) {
         }
 
         try {
-            const {data} = await axios.post('/api/auth/login', { email, password }, config);
+            const { data } = await axios.post('/api/auth/login', { email, password }, config);
 
             localStorage.setItem('authToken', data.token);
             history.push('/');
-        } catch(error) {
+        } catch (error) {
             setError(error.response.data.error);
-            setTimeout(()=>{
+            setTimeout(() => {
                 setError('');
             }, 5000);
         }
     }
 
     return (
-        <div>
+        <Layout>
             <form onSubmit={loginHandler}>
-                <h3>Login</h3>
+                <h3 className="form-heading">Login</h3>
                 {error && <span>{error}</span>}
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email" placeholder="Enter Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required />
+                <div className="form-row">
+                    <div className="input-field">
+                        <input
+                            type="email"
+                            id="email" className="form-control"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required />
+                        <label htmlFor="email">Email</label>
+                    </div>
+                    <div className="input-field">
+                        <input
+                            type="password"
+                            id="password" className="form-control"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required />
+                        <label htmlFor="password">Password</label>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor="password">Password:</label>
-                    <input
-                        type="password"
-                        id="password" placeholder="Enter Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required />
+                <div className="form-footer">
+                    <button type="submit" >Login</button>
+                    <p>Not having an account? <Link to="/register">Register</Link></p>
                 </div>
-
-                <button type="submit" >Login</button>
-                <span>Not having an account? <Link to="/register">Register</Link></span>
             </form>
-        </div>
+        </Layout>
     )
 }
 
